@@ -1,6 +1,6 @@
 ﻿namespace Aoc2021.D1P1;
 
-internal static class D1P1Program
+internal static class Program
 {
     public static async Task MainAsync()
     {
