@@ -1,1 +1,1 @@
-﻿await Aoc2021.D1P2.Program.MainAsync();
+﻿await Aoc2021.D2P2.Program.MainAsync();
