@@ -6,7 +6,13 @@ if (!$IsLinux) {
 
 # Prerequisite: execute https://raw.githubusercontent.com/Metalnem/sharpfuzz/master/build/Install.sh
 
-$libraryPath = Join-Path $PSScriptRoot "Aoc2021.dll"
+$libraries = @(
+    "Aoc2021.dll",
+    "Koek.dll",
+    "Koek.NetStandard.dll"
+)
+
+$libraryPaths = $libraries | % { Join-Path $PSScriptRoot $_ }
 $entrypointPath = Join-Path $PSScriptRoot "Aoc2021.Fuzz.dll"
 $inputPath = Join-Path $PSScriptRoot "D2P2"
 $outputPath = Join-Path $PSScriptRoot "out"
@@ -18,8 +24,11 @@ function VerifySuccess() {
 }
 
 # Instrument the library.
-& sharpfuzz $libraryPath
-VerifySuccess
+foreach ($libraryPath in $libraryPaths) {
+    Write-Host "Instrumenting $libraryPath"
+    & sharpfuzz $libraryPath
+    VerifySuccess
+}
 
 # Start!
 # We need -m to increase the default (tiny) memory limit.
