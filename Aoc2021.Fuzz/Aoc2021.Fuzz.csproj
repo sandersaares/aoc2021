@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Aoc2021\Aoc2021.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Fuzz.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
