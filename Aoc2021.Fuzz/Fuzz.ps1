@@ -6,6 +6,7 @@ if (!$IsLinux) {
 
 # Prerequisite: execute https://raw.githubusercontent.com/Metalnem/sharpfuzz/master/build/Install.sh
 
+# TODO: Is it valid to instrument multiple assemblies? It seems to work but did not go too deep in checking.
 $libraries = @(
     "Aoc2021.dll",
     "Koek.dll",
@@ -17,17 +18,10 @@ $entrypointPath = Join-Path $PSScriptRoot "Aoc2021.Fuzz.dll"
 $inputPath = Join-Path $PSScriptRoot "D2P2"
 $outputPath = Join-Path $PSScriptRoot "out"
 
-function VerifySuccess() {
-    if ($LASTEXITCODE -ne 0) {
-        Write-Error "Command failed with exit code $LASTEXITCODE"
-    }
-}
-
 # Instrument the library.
 foreach ($libraryPath in $libraryPaths) {
     Write-Host "Instrumenting $libraryPath"
     & sharpfuzz $libraryPath
-    VerifySuccess
 }
 
 # Start!
