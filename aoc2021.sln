@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aoc2021", "Aoc2021\Aoc2021.csproj", "{C5628CFE-801F-445F-92C9-040DF6F797E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aoc2021", "Aoc2021\Aoc2021.csproj", "{C5628CFE-801F-445F-92C9-040DF6F797E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aoc2021.Tests", "Aoc2021.Tests\Aoc2021.Tests.csproj", "{B15B554C-DFA6-4B87-B906-42EBEABBF164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aoc2021.Tests", "Aoc2021.Tests\Aoc2021.Tests.csproj", "{B15B554C-DFA6-4B87-B906-42EBEABBF164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aoc2021.Fuzz", "Aoc2021.Fuzz\Aoc2021.Fuzz.csproj", "{49A47DF9-B16C-4573-8979-AEBE1E82E418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B15B554C-DFA6-4B87-B906-42EBEABBF164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15B554C-DFA6-4B87-B906-42EBEABBF164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15B554C-DFA6-4B87-B906-42EBEABBF164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A47DF9-B16C-4573-8979-AEBE1E82E418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A47DF9-B16C-4573-8979-AEBE1E82E418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A47DF9-B16C-4573-8979-AEBE1E82E418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A47DF9-B16C-4573-8979-AEBE1E82E418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

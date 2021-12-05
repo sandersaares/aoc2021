@@ -2,21 +2,14 @@
 
 namespace Aoc2021.D2P2;
 
-internal static class Program
+public static class Program
 {
-    public static async Task MainAsync()
+    public static async Task MainAsync(IAsyncEnumerable<string> inputLines)
     {
         var tracker = new PositionTracker();
 
-        using var reader = new StreamReader("D2P1/input.txt");
-
-        while (!reader.EndOfStream)
+        await foreach (var line in inputLines)
         {
-            var line = await reader.ReadLineAsync();
-
-            if (line == null)
-                continue;
-
             var vector = MovementCommand.Parse(line);
             tracker.Add(vector);
         }
