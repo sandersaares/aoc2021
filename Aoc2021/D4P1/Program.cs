@@ -4,6 +4,7 @@ namespace Aoc2021.D4P1;
 
 public static class Program
 {
+    // Also P2 because it's easy.
     public static async Task MainAsync(IAsyncEnumerable<string> inputLines)
     {
         var lines = await inputLines.ToListAsync();
@@ -34,6 +35,8 @@ public static class Program
 
         Console.WriteLine($"Loaded {boards.Count} boards.");
 
+        bool firstWinnerFound = false;
+
         foreach (var number in numbers)
         {
             Console.WriteLine($"Marking {number}");
@@ -41,20 +44,28 @@ public static class Program
             foreach (var board in boards)
                 board.Mark(number);
 
-            var winner = boards.SingleOrDefault(x => x.IsWinner);
+            var winners = boards.Where(x => x.IsWinner).ToList();
 
-            if (winner != null)
+            foreach (var winner in winners)
             {
-                Console.WriteLine($"Found winner!");
-                Console.WriteLine(winner.Dump());
+                if (!firstWinnerFound || boards.Count == 1)
+                {
+                    Console.WriteLine($"Found winner!");
+                    Console.WriteLine(winner.Dump());
 
-                var magicValue = winner.SumOfUnmarkedValues * number;
-                Console.WriteLine(magicValue);
+                    var magicValue = winner.SumOfUnmarkedValues * number;
+                    Console.WriteLine($"Winner magic value: {magicValue}");
+                    firstWinnerFound = true;
+                }
 
-                return;
+                // Keep going so we can find the board that wins the last.
+                boards.Remove(winner);
+
+                if (boards.Count == 0)
+                    return; // All done!
             }
         }
 
-        throw new ContractException("No winner found.");
+        throw new UnreachableCodeException();
     }
 }
