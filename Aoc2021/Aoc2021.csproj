@@ -40,5 +40,8 @@
 	  <None Update="D3P1\input.txt">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="D4P1\input.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>
