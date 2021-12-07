@@ -16,14 +16,14 @@ public static class Program
             throw new ContractException("No bits found on first line.");
 
         CountBitsInPosition(lines, bitCount, out int[] onCount, out int[] offCount);
-        FindMostAndLeastCommonBits(bitCount, onCount, offCount, bias: '0', out _, out _, out int gamma, out int epsilon);
+        FindMostAndLeastCommonBits(bitCount, onCount, offCount, out int gamma, out int epsilon);
 
         var powerConsumption = gamma * epsilon;
         Console.WriteLine(powerConsumption);
     }
 
     // bias is which bit to choose if both are equally common
-    private static void FindMostAndLeastCommonBits(int bitCount, int[] onCount, int[] offCount, char bias, out string mostCommon, out string leastCommon, out int mostCommonDecimal, out int leastCommonDecimal)
+    private static void FindMostAndLeastCommonBits(int bitCount, int[] onCount, int[] offCount, out int mostCommonDecimal, out int leastCommonDecimal)
     {
         // gamma
         var mostCommonBuilder = new StringBuilder();
@@ -37,20 +37,15 @@ public static class Program
                 _ = mostCommonBuilder.Append('1');
                 _ = leastCommonBuilder.Append('0');
             }
-            else if (onCount[i] < offCount[i])
+            else
             {
                 _ = mostCommonBuilder.Append('0');
                 _ = leastCommonBuilder.Append('1');
             }
-            else
-            {
-                mostCommonBuilder.Append(bias);
-                leastCommonBuilder.Append(bias);
-            }
         }
 
-        mostCommon = mostCommonBuilder.ToString();
-        leastCommon = leastCommonBuilder.ToString();
+        var mostCommon = mostCommonBuilder.ToString();
+        var leastCommon = leastCommonBuilder.ToString();
 
         Console.WriteLine(mostCommon);
         Console.WriteLine(leastCommon);

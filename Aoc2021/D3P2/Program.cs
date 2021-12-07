@@ -8,12 +8,6 @@ public static class Program
     {
         var lines = await inputLines.ToListAsync();
 
-        // We assume every line has the same number of bits.
-        var bitCount = lines.First().Length;
-
-        if (bitCount <= 0)
-            throw new ContractException("No bits found on first line.");
-
         var oxygenGeneratorRating = FindByPrefixSearch(lines, GetOxygenGeneratorPrefix);
         var co2ScrubberRating = FindByPrefixSearch(lines, GetCo2ScrubberPrefix);
 
